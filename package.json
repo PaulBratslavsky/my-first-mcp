@@ -1,5 +1,5 @@
 {
-  "name": "my-first-mcp",
+  "name": "pokemon-battle-mcp",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.js",

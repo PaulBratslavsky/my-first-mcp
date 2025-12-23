@@ -1,37 +1,26 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { createMcpHttpServer } from "./http.js";
+import { registerPokemonBattleTool } from "./tools/pokemon-battle.js";
+import { registerPokemonResources } from "./resources/pokemon.js";
 
 const createServer = () => {
   const server = new McpServer(
     {
       version: "1.0.0",
-      name: "my-first-mcp",
+      name: "pokemon-battle-mcp",
     },
     {
-      instructions: "This server solves math problems.",
-      capabilities: { logging: {}, tools: {} },
+      instructions:
+        "This server provides Pokemon data and battle simulations. Use the pokemon-battle tool to simulate battles between Pokemon and create exciting battle narratives.",
+      capabilities: { logging: {}, tools: {}, resources: {} },
     }
   );
 
-  // Add your tools, resources, and prompts here
+  // Register tools
+  registerPokemonBattleTool(server);
 
-  server.registerTool(
-    "add",
-    {
-      title: "Add",
-      description: "Adds the numbers 1 and 2 together.",
-    },
-    async () => {
-      return {
-        content: [
-          {
-            type: "text",
-            text: "The sum of 1 and 2 is 3",
-          },
-        ],
-      };
-    }
-  );
+  // Register resources
+  registerPokemonResources(server);
 
   return server;
 };
