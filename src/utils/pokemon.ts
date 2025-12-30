@@ -5,17 +5,12 @@ export interface Pokemon {
   types: string[];
   stats: Record<string, number>;
   totalStats: number;
-  sprite: string;
 }
 
 export interface PokemonDetails extends Pokemon {
   height: number;
   weight: number;
   abilities: string[];
-  sprites: {
-    front: string;
-    back: string;
-  };
 }
 
 export interface PokemonListItem {
@@ -46,7 +41,6 @@ export async function fetchPokemon(name: string): Promise<Pokemon | null> {
     types: data.types.map((t: { type: { name: string } }) => t.type.name),
     stats,
     totalStats: Object.values(stats).reduce((a, b) => a + b, 0),
-    sprite: data.sprites.front_default,
   };
 }
 
@@ -78,11 +72,6 @@ export async function fetchPokemonDetails(
     ),
     stats,
     totalStats: Object.values(stats).reduce((a, b) => a + b, 0),
-    sprite: data.sprites.front_default,
-    sprites: {
-      front: data.sprites.front_default,
-      back: data.sprites.back_default,
-    },
   };
 }
 

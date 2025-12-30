@@ -68,7 +68,6 @@ export function registerPokemonBattleTool(server: McpServer) {
             stats: pokemon1Data.stats,
             totalStats: pokemon1Data.totalStats,
             battleScore: score1,
-            sprite: pokemon1Data.sprite,
           },
           fighter2: {
             name: pokemon2Data.name.toUpperCase(),
@@ -76,7 +75,6 @@ export function registerPokemonBattleTool(server: McpServer) {
             stats: pokemon2Data.stats,
             totalStats: pokemon2Data.totalStats,
             battleScore: score2,
-            sprite: pokemon2Data.sprite,
           },
         },
         result: {
